@@ -1,12 +1,11 @@
 import googlemaps
-import csv
-import time
+from .api_key import key
 
 
 
 
 
-def get_features(api_key,lat,long,radius):
+def get_features(lat,long,radius):
 
     # List with the points of interest for the house pricing
     keypoints = [
@@ -25,7 +24,7 @@ def get_features(api_key,lat,long,radius):
     'veterinary_care'
     ]
 
-    gmaps = googlemaps.Client(key=api_key)
+    gmaps = googlemaps.Client(key=key)
 
     # Dictionary to store the number of points of interest
     keypoint_counts = {points_of_interest: 0 for points_of_interest in keypoints}
@@ -54,11 +53,3 @@ def get_features(api_key,lat,long,radius):
 
 
 
-
-if __name__ == "__main__":
-    key = 'AIzaSyAI3YFnFiW9r3CVYONXX9Jb3nJUync6Qhc'
-    # Ibmec BH latitude and longitude
-    latitude = -19.92864689130775  
-    longitude = -43.93039249888748  
-    radius = 100  
-    print(get_features(key,latitude,longitude,radius))
