@@ -3,6 +3,7 @@ import unicodedata
 import re
 from .geolocator import get_cordinates
 import requests
+from .api_key import key
 
 BASE_URL = 'https://www.quintoandar.com.br/alugar/imovel/belo-horizonte-mg-brasil?pagina='
 
@@ -28,7 +29,7 @@ def get_info(soup):
     infos = [var.text for var in soup.find_all('p', class_='CozyTypography xih2fc EKXjIf Ci-jp3')]
     prices = [var.text for var in soup.find_all('div', class_='MuiBox-root mui-1ogb0fw')]
     location = soup.find('h4', class_='CozyTypography xih2fc EqjlRj').text + ', ' + soup.find('small', class_='CozyTypography xih2fc pwAPLE').text
-    ##lat, long = get_cordinates(location)
+    lat, long = get_cordinates(location,key)
     return {
         'Square Meters': int(infos[0][0:2]),
         'Bedrooms': int(infos[1][0:1]),
@@ -42,5 +43,9 @@ def get_info(soup):
         'Fire Insurance': clean_and_convert(prices[3].split('R$')[1]),
         'Service Tax': clean_and_convert(prices[4].split('R$')[1]),
         'Total': clean_and_convert(prices[5].split('R$')[1]),
-        'Location': location,
+        'Location': (lat,long),
     }
+
+
+
+
