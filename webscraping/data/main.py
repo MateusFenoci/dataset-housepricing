@@ -1,10 +1,12 @@
-from scripts.scrapping import get_soup, get_links, get_info, get_soup_html
+from scripts.scrapping import get_soup, get_links, get_info, get_soup_html, get_html 
+from .vars import BASE_HTML, BASE_URL
 import pandas as pd
 
-BASE_URL = 'https://www.quintoandar.com.br/alugar/imovel/belo-horizonte-mg-brasil'
-BASE_HTML = 'links.html'
 
 def main():
+    ## Pegar o HTML da pagina principal e salvar
+    html = get_html(BASE_URL)
+
     ## Iniciar o processo de web scraping
     soup = get_soup_html(BASE_HTML)
 

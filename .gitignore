@@ -4,3 +4,4 @@ api_key.py
 __pycache__/
 links.html
 data.csv
+vars.py
