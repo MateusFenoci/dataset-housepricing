@@ -1,13 +1,8 @@
 import pandas as pd
 from sklearn.model_selection import GridSearchCV,train_test_split
 import matplotlib.pyplot as plt
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import mean_squared_log_error,mean_absolute_error
-import seaborn as sns
-from sklearn.base import clone
 import numpy as np
 from keras import layers,models,callbacks
-from scikeras.wrappers import KerasRegressor
 
 
 
@@ -44,9 +39,6 @@ keypoints = [
     'Fire Insurance'      # Seguro contra incêndio
 ]
 
-prediction = model.predict(np.array([]))
-
-#df = df.drop(columns=["Location","ID","Rent","Lat","Long","Total","Service Tax","spa","airport","church","electrician","plumber","insurance_agency"])
 df = df[keypoints]
 
 print(df.shape)
@@ -83,8 +75,13 @@ history = model.fit(X_train, y_train,
                     verbose=1)
 
 
+teste = pd.read_csv('teste.csv')
+teste = teste[keypoints]
+print(teste.head)
+print(teste.shape)
 
-prediction = model.predict(np.array([]))
+prediction = model.predict(np.array([teste]).reshape(-1,24))
+print(prediction)
 #Salvando o modelo
 model.save("model.h5")
 
