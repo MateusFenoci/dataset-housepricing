@@ -1,0 +1,6 @@
+beautifulsoup4
+selenium
+googlemaps
+pandas
+requests
+unittest
