@@ -9,7 +9,7 @@ def get_features(lat,long,radius):
 
     # List with the points of interest for the house pricing
     keypoints = [
-    'accounting', 'airport', 'amusement_park', 'art_gallery', 'atm', 'bakery',
+    'airport', 'amusement_park', 'art_gallery', 'atm', 'bakery',
     'bank', 'bar', 'beauty_salon', 'bus_station',
     'cafe', 'car_repair', 'car_wash', 'church', 'clothing_store', 'convenience_store', 'dentist', 'department_store',
     'doctor', 'electrician', 'electronics_store', 'fire_station',

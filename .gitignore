@@ -1,4 +1,6 @@
 .venv
 api_key.py
+data.csv
+googlemaps.csv
 *.pyc
 __pycache__/
