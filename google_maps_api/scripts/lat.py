@@ -8,6 +8,3 @@ geocode_result = gmaps.geocode('Cruzeiro, Belo Horizonte')
 lat = geocode_result[0]["geometry"]["location"]["lat"]
 lon = geocode_result[0]["geometry"]["location"]["lng"]
 
-print(geocode_result)
-
-print(f"lat = {lat}\nlong = {lon}")

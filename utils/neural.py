@@ -41,17 +41,8 @@ keypoints = [
 
 df = df[keypoints]
 
-print(df.shape)
-
-
-'''scaler = RobustScaler()
-scaler.fit(df)
-df = pd.DataFrame(scaler.transform(df))'''
-
 X_train, X_test, y_train, y_test = train_test_split(
     df, y, test_size=0.2, random_state=seed)
-
-
 
 model = models.Sequential()
 
@@ -59,6 +50,7 @@ model.add(layers.Dense(24,activation="relu",input_dim=24))
 
 model.add(layers.Dense(16,activation="relu"))
 model.add(layers.Dense(8,activation="relu"))
+
 model.add(layers.Dense(1))
 
 model.compile(optimizer="adam",loss="mean_absolute_error",metrics=["mean_absolute_error"])
@@ -74,14 +66,11 @@ history = model.fit(X_train, y_train,
                     callbacks=[early_stopping_callback,callback],
                     verbose=1)
 
-
 teste = pd.read_csv('teste.csv')
 teste = teste[keypoints]
-print(teste.head)
-print(teste.shape)
 
 prediction = model.predict(np.array([teste]).reshape(-1,24))
-print(prediction)
+
 #Salvando o modelo
 model.save("model.h5")
 
