@@ -1,11 +1,16 @@
 import googlemaps
 from .api_key import key
 
+def get_lat_lon(endereco):
+    gmaps = googlemaps.Client(key=key)
+    geocode_result = gmaps.geocode(endereco)
+    if not geocode_result:
+        raise ValueError('Endereço não encontrado')
+    lat = geocode_result[0]["geometry"]["location"]["lat"]
+    lon = geocode_result[0]["geometry"]["location"]["lng"]
+    return lat, lon
 
-
-
-
-def get_features(lat,long,radius):
+def get_features(lat,long,radius=500):
 
     # List with the points of interest for the house pricing
     keypoints = [

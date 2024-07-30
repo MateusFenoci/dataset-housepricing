@@ -32,7 +32,7 @@ def make_prediction(dataset):
 ]
     model = tf.keras.models.load_model('model.h5')
     model.load_weights('ModelWeights.weights.h5')
-    teste = pd.read_csv(dataset)
+    teste = dataset
     teste = teste[keypoints]
 
     prediction = model.predict(np.array([teste]).reshape(-1,24))
