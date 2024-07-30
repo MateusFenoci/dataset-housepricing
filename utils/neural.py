@@ -44,6 +44,8 @@ keypoints = [
     'Fire Insurance'      # Seguro contra incêndio
 ]
 
+prediction = model.predict(np.array([]))
+
 #df = df.drop(columns=["Location","ID","Rent","Lat","Long","Total","Service Tax","spa","airport","church","electrician","plumber","insurance_agency"])
 df = df[keypoints]
 
@@ -81,6 +83,8 @@ history = model.fit(X_train, y_train,
                     verbose=1)
 
 
+
+prediction = model.predict(np.array([]))
 #Salvando o modelo
 model.save("model.h5")
 
