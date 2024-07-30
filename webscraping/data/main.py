@@ -1,24 +1,26 @@
-from scripts.scrapping import get_soup, generate_urls, get_links, get_info
+from scripts.scrapping import get_soup, get_links, get_info, get_soup_html
+import pandas as pd
+
+BASE_URL = 'https://www.quintoandar.com.br/alugar/imovel/belo-horizonte-mg-brasil'
+BASE_HTML = 'links.html'
 
 def main():
+    ## Iniciar o processo de web scraping
+    soup = get_soup_html(BASE_HTML)
 
-    ## Nº of pages to scrape
-    urls = generate_urls(1)
+    ## Pegar os links de cada apartamento da pagina HTML
+    links = get_links(soup)
 
-    ## List of links from all pages
-    links = []
-    for url in urls:
-        soup = get_soup(url)
-        links.extend(get_links(soup))
-
-    ## Excract the info from all links
-    for link in links:
-        soup = get_soup(link)
-        info = get_info(soup)
-
-        print(info)
-        break
-
+    ## Excract the info from all links and insert at a CSV
+    for i, link in enumerate(links):
+        try:
+            soup = get_soup(link)
+            info = get_info(soup)
+            info = pd.DataFrame([info])
+            info.to_csv(f'data.csv', mode='a', header=False, index=False)
+            print(f'Inserindo {i+1} de {len(links)}')
+        except:
+            pass
 
 if __name__ == "__main__":
     main()

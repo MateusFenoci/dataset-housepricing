@@ -2,3 +2,5 @@
 api_key.py
 *.pyc
 __pycache__/
+links.html
+data.csv
