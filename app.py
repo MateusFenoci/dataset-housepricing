@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from google_maps_api.scripts.utils import get_lat_lon, get_features
-from utils.use_neural_network import make_prediction
+from scripts.google_maps_api.scripts.utils import get_lat_lon, get_features
+from scripts.utils.use_neural_network import make_prediction
 
 st.set_page_config(page_title='Precificando Aluguel', page_icon=':bar_chart:', layout='wide')
 

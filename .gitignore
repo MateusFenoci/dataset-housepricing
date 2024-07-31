@@ -1,14 +1,4 @@
 .venv
+__pycache__
 api_key.py
-<<<<<<< HEAD
-*.pyc
-__pycache__/
-links.html
-data.csv
 vars.py
-=======
-data.csv
-googlemaps.csv
-*.pyc
-__pycache__/
->>>>>>> google_maps_api
