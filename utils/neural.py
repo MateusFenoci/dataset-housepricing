@@ -77,7 +77,6 @@ model.save("model.h5")
 #Salvando os pesos
 model.save_weights("ModelWeights.weights.h5")
 
-
 #Plotando o grafico de loss
 plt.plot(history.history['loss'],color='red',label='training loss')
 plt.plot(history.history['val_loss'],color='blue',label='validation loss')
